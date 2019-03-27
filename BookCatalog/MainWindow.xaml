@@ -33,7 +33,10 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <Border BorderThickness="1,1,1,1" BorderBrush="Black" 
+            Grid.Column="0" Grid.Row="1" />
+        <Border BorderThickness="0,1,1,1" BorderBrush="Black" 
+            Grid.Column="1" Grid.Row="1" />
         <ListBox  Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{DynamicResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
         <Label Content="My Books" HorizontalAlignment="Left" Margin="26,13,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
