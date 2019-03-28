@@ -1,4 +1,4 @@
-﻿<Window x:Class="BookCatalog.MainWindow"
+﻿<Window x:Class="BookCatalog.MainWindow" ButtonBase.Click="DeleteBook"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -37,8 +37,8 @@
             Grid.Column="0" Grid.Row="1" />
         <Border BorderThickness="0,1,1,1" BorderBrush="Black" 
             Grid.Column="1" Grid.Row="1" />
-        
-        <ListBox  Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{StaticResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+        <ListBox Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{StaticResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
         </ListBox>
         <Label Content="My Books" HorizontalAlignment="Left" Margin="26,13,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <StackPanel Grid.Column="1" Grid.Row="1">
@@ -48,26 +48,27 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" RenderTransformOrigin="0.591,0.401">
                 <Label Content="Title" Width="70"></Label>
-                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Title, ElementName=ListOfBooks}" Width="305" Margin="0,0,10,0"/>
+                <TextBox x:Name="BookTitle" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Title, ElementName=ListOfBooks}" Width="305" Margin="0,0,10,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,0,0.4,0" Width="382">
                 <Label Content="Author" Width="70"></Label>
-                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Author, ElementName=ListOfBooks}" Width="248" Margin="0,0,50,0"/>
+                <TextBox x:Name="BookAuthor" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Author, ElementName=ListOfBooks}" Width="248" Margin="0,0,50,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,0,63.4,0">
                 <Label Content="Year" MinWidth="2" Width="70"></Label>
-                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding ElementName=ListOfBooks, Path=SelectedItem.Year}" Width="248" Margin="0,0,50,0"/>
+                <TextBox x:Name="BookYear" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=ListOfBooks, Path=SelectedItem.Year}" Width="248" Margin="0,0,50,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="70,0,0,0" VerticalAlignment="Center" Height="40" HorizontalAlignment="Left">
-                <CheckBox Content="IsRead" IsChecked="{Binding ElementName=ListOfBooks, Path=SelectedItem.IsRead}" Margin="0" VerticalAlignment="Center"/>
+                <CheckBox x:Name="BookIsRead" Content="IsRead" IsChecked="{Binding ElementName=ListOfBooks, Path=SelectedItem.IsRead}" Margin="0" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0">
                 <Label Content="Format" Width="70"/>
-                <ComboBox Width="123" ItemsSource="{Binding Source={StaticResource ResourceKey=enmBookFormats}}" SelectedItem="{Binding SelectedItem.Format, ElementName=ListOfBooks}"/>
+                <ComboBox x:Name="BookFormat" Width="123" ItemsSource="{Binding Source={StaticResource ResourceKey=enmBookFormats}}" SelectedItem="{Binding SelectedItem.Format, ElementName=ListOfBooks}"/>
             </StackPanel>
         </StackPanel>
-    
-    
+        <Button Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="26,309,0,0" Grid.Row="1" Grid.Column="0" Click="Add_Button_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="274.4,309,0,0" Grid.Row="1" Grid.Column="1" Click="Remove_Button_Click"/>
+
     </Grid>
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,11 +35,7 @@ namespace HomeLibrary
 
     public static class MyBookCollection
     {
-        public static List<Book> GetMyCollection()
-        {
-            return new List<Book>()
-            {
-                new Book(1){ Author = "J.K. Rowling", Format = BookFormat.EBook, IsRead = true, Title = "Harry Potter and the Philosopher's Stone", Year=1997},
+        private static ObservableCollection<Book> books = new ObservableCollection<Book>() { new Book(1){ Author = "J.K. Rowling", Format = BookFormat.EBook, IsRead = true, Title = "Harry Potter and the Philosopher's Stone", Year=1997},
 
                 new Book(2)
                 {
@@ -52,10 +49,11 @@ namespace HomeLibrary
 
                 new Book(5){Author = "Wayne Thomas Batson", Format = BookFormat.EBook, IsRead = true, Title = "Isle of Swords", Year = 2007},
 
-                new Book(6){Author = "Louis A. Meyer", Format = BookFormat.EBook, IsRead = true, Title = "Under the Jolly Roger", Year = 200},
-                
-            };
+                new Book(6){Author = "Louis A. Meyer", Format = BookFormat.EBook, IsRead = true, Title = "Under the Jolly Roger", Year = 2000}};
 
+        public static ObservableCollection<Book> GetMyCollection()
+        {
+            return books;
         }
     }
 }
