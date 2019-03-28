@@ -37,8 +37,37 @@
             Grid.Column="0" Grid.Row="1" />
         <Border BorderThickness="0,1,1,1" BorderBrush="Black" 
             Grid.Column="1" Grid.Row="1" />
-        <ListBox  Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{DynamicResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+        
+        <ListBox  Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{StaticResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        </ListBox>
         <Label Content="My Books" HorizontalAlignment="Left" Margin="26,13,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <Label Content="ID" Width="70"></Label>
+                <Label Content="{Binding ElementName=ListOfBooks, Path=SelectedItem.Id}"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" RenderTransformOrigin="0.591,0.401">
+                <Label Content="Title" Width="70"></Label>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Title, ElementName=ListOfBooks}" Width="305" Margin="0,0,10,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,0,0.4,0" Width="382">
+                <Label Content="Author" Width="70"></Label>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Author, ElementName=ListOfBooks}" Width="248" Margin="0,0,50,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,0,63.4,0">
+                <Label Content="Year" MinWidth="2" Width="70"></Label>
+                <TextBox Height="23" TextWrapping="Wrap" Text="{Binding ElementName=ListOfBooks, Path=SelectedItem.Year}" Width="248" Margin="0,0,50,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="70,0,0,0" VerticalAlignment="Center" Height="40" HorizontalAlignment="Left">
+                <CheckBox Content="IsRead" IsChecked="{Binding ElementName=ListOfBooks, Path=SelectedItem.IsRead}" Margin="0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0">
+                <Label Content="Format" Width="70"/>
+                <ComboBox Width="123" ItemsSource="{Binding Source={StaticResource ResourceKey=enmBookFormats}}" SelectedItem="{Binding SelectedItem.Format, ElementName=ListOfBooks}"/>
+            </StackPanel>
+        </StackPanel>
+    
+    
     </Grid>
 
 
