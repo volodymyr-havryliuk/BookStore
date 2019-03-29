@@ -51,6 +51,11 @@ namespace HomeLibrary
 
                 new Book(6){Author = "Louis A. Meyer", Format = BookFormat.EBook, IsRead = true, Title = "Under the Jolly Roger", Year = 2000}};
 
+        public static void AddBook(Book newBook)
+        {
+            books.Add(newBook);
+        }
+
         public static ObservableCollection<Book> GetMyCollection()
         {
             return books;

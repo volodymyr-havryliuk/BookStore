@@ -33,7 +33,7 @@ namespace BookCatalog
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             var nextId = maxBookId + 1;
-            MyBookCollection.GetMyCollection().Add(new Book(++maxBookId)
+            MyBookCollection.AddBook(new Book(++maxBookId)
             {
                 Author = BookAuthor.Text,
                 Format = (BookFormat)BookFormat.SelectedItem,
@@ -48,9 +48,9 @@ namespace BookCatalog
             result = MessageBox.Show("Delete selected book?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
-        private void DeleteBook(object sender, RoutedEventArgs e)
+        private void Window_Click(object sender, RoutedEventArgs e)
         {
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes && e.OriginalSource is Button && ((Button)e.OriginalSource).Name == "DeleteBookButton")
             {
                 MyBookCollection.GetMyCollection().Remove((Book)ListOfBooks.SelectedItem);
             }
