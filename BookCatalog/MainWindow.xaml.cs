@@ -55,5 +55,10 @@ namespace BookCatalog
                 MyBookCollection.GetMyCollection().Remove((Book)ListOfBooks.SelectedItem);
             }
         }
+
+        private void DarknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            FirstRow.Background = new SolidColorBrush(Color.FromRgb(0,(byte)e.NewValue,0));
+        }
     }
 }

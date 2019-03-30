@@ -68,6 +68,15 @@
         </StackPanel>
         <Button Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="26,309,0,0" Grid.Row="1" Grid.Column="0" Click="Add_Button_Click"/>
         <Button x:Name="DeleteBookButton" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="274.4,309,0,0" Grid.Row="1" Grid.Column="1" Click="Remove_Button_Click"/>
+        <Slider x:Name="DarknessSlider" HorizontalAlignment="Left" Margin="61,28.2,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="569" Maximum="255" LargeChange="10" SmallChange="1" Interval="29" IsSnapToTickEnabled="True" Value="{Binding Background.Color.G, ElementName=FirstRow}" ValueChanged="DarknessSlider_ValueChanged"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="274.4,19.2,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Value, ElementName=DarknessSlider, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="83"/>
+        <DockPanel x:Name="FirstRow" Grid.Row="0" HorizontalAlignment="Left" LastChildFill="False" VerticalAlignment="Top" Background="#FFABDDAB" Grid.ColumnSpan="2" Width="764" Height="72">
+            <Rectangle Fill="{DynamicResource LogoBackgorund}" Height="52" VerticalAlignment="Top" Width="102" Margin="50,10,0,0">
+                
+            </Rectangle>
+        </DockPanel>
+        <Label Content="Adjust the darkness:" HorizontalAlignment="Left" Margin="18,5.2,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.117" Width="134"/>
+
 
     </Grid>
 
