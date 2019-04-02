@@ -11,7 +11,7 @@
                 <x:Type TypeName="enm:BookFormat"></x:Type>  
             </ObjectDataProvider.MethodParameters>  
         </ObjectDataProvider>
-        <ImageBrush x:Key="LogoBackgorund" ImageSource="Images/BooksLogo.png">
-        </ImageBrush>
+        <ImageBrush x:Key="LogoBackgorund" ImageSource="Images/BooksLogo.png"/>
+        
     </Application.Resources>
 </Application>

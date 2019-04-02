@@ -8,19 +8,27 @@
         Title="MainWindow" HorizontalAlignment="Center" VerticalAlignment="Center">
 
     <Window.Resources>
-        <DataTemplate x:Key="ShortBookTemplate">
-            <DockPanel Width="330" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Border  BorderThickness="1,1,0,1" BorderBrush="Black" Height="20">
-                    <TextBlock DockPanel.Dock="Left" Width="110" Text="{Binding Id}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" TextAlignment="Center"/>
-                </Border>
-                <Border BorderThickness="1,1,0,1" BorderBrush="Black">
-                    <TextBlock DockPanel.Dock="Left" Width="110" Text="{Binding Title}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" TextAlignment="Left" />
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black">
-                    <TextBlock DockPanel.Dock="Right" Width="110" Text="{Binding IsRead}" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
-                </Border>
-            </DockPanel>
-        </DataTemplate>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="ShortBookTemplate">
+                <DockPanel Width="330" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border BorderThickness="1,1,0,1" BorderBrush="Black" Height="20">
+                        <TextBlock Style="{StaticResource RedFontForUnreadBook}"  DockPanel.Dock="Left" Width="110" Text="{Binding Id}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" TextAlignment="Center" />
+                        </Border>
+                        <Border BorderThickness="1,1,0,1" BorderBrush="Black">
+                        <TextBlock Style="{StaticResource RedFontForUnreadBook}"  DockPanel.Dock="Left" Width="110" Text="{Binding Title}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" TextAlignment="Left" />
+                        </Border>
+                        <Border  BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Style="{StaticResource RedFontForUnreadBook}"  DockPanel.Dock="Right" Width="110" Text="{Binding IsRead}" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                        </Border>
+                    </DockPanel>
+                
+            </DataTemplate>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/BookCatalog;component/css/BookCatalogStyles.xaml">
+            </ResourceDictionary>
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Width="764"
         HorizontalAlignment="Center" VerticalAlignment="Center" Height="506" >
@@ -37,8 +45,7 @@
             Grid.Column="0" Grid.Row="1" />
         <Border BorderThickness="0,1,1,1" BorderBrush="Black" 
             Grid.Column="1" Grid.Row="1" />
-
-        <ListBox Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top" ItemTemplate="{StaticResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox Grid.Column="0" Grid.Row="1" x:Name="ListOfBooks" HorizontalAlignment="Right" VerticalAlignment="Top"  ItemTemplate="{StaticResource ShortBookTemplate}" ClipToBounds="True" Margin="0,58,10.4,0" Height="132" Width="362" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
         </ListBox>
         <Label Content="My Books" HorizontalAlignment="Left" Margin="26,13,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <StackPanel Grid.Column="1" Grid.Row="1">
@@ -48,7 +55,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" RenderTransformOrigin="0.591,0.401">
                 <Label Content="Title" Width="70"></Label>
-                <TextBox x:Name="BookTitle" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Title, ElementName=ListOfBooks}" Width="305" Margin="0,0,10,0"/>
+                <TextBox x:Name="BookTitle" Height="23" TextWrapping="Wrap" Text="{Binding SelectedItem.Title, ElementName=ListOfBooks}" Width="305" Margin="0,0,10,0" />
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,0,0.4,0" Width="382">
                 <Label Content="Author" Width="70"></Label>
@@ -72,7 +79,7 @@
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="274.4,19.2,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Value, ElementName=DarknessSlider, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="83"/>
         <DockPanel x:Name="FirstRow" Grid.Row="0" HorizontalAlignment="Left" LastChildFill="False" VerticalAlignment="Top" Background="#FFABDDAB" Grid.ColumnSpan="2" Width="764" Height="72">
             <Rectangle Fill="{DynamicResource LogoBackgorund}" Height="52" VerticalAlignment="Top" Width="102" Margin="50,10,0,0">
-                
+
             </Rectangle>
         </DockPanel>
         <Label Content="Adjust the darkness:" HorizontalAlignment="Left" Margin="18,5.2,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.117" Width="134"/>
