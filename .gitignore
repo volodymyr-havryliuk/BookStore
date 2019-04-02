@@ -190,3 +190,7 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+.vs/BookCatalog/v15/Server/sqlite3/storage.ide-shm
+.vs/BookCatalog/v15/Server/sqlite3/db.lock
+.vs/BookCatalog/v15/Server/sqlite3/storage.ide
+.vs/BookCatalog/v15/Server/sqlite3/storage.ide-wal
